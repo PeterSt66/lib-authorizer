@@ -1,3 +1,3 @@
 'use strict';
 /* istanbul ignore next */
-module.exports = require('././Authorizer');
+module.exports = require('./lib/Authorizer');

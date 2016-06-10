@@ -6,7 +6,7 @@ const should = chai.should();
 const EventEmitter = require('events').EventEmitter;
 //const sinon = require('sinon');
 
-const Authorizer = require('../lib/Authorizer');
+const Authorizer = require('../index.js');
 const logger = require('../lib/defaultlogger');
 
 let authorizer = null;
