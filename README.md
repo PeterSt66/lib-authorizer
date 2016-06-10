@@ -41,7 +41,7 @@ const Authorizer = require('lib_authorizer');
 
 const authCall = function() {
     return Promise.resolve({
-        expires: Date.now() + 3600;
+        expires: Date.now() + 3600
     });
 }
 
