@@ -48,7 +48,7 @@ const shouldBeOk = (promise, calledWhenSucces) => {
             logger.info('>> shouldBeOk fail:', err);
             throw new Error('should not be here', err);
         });
-}
+};
 
 
 describe('Authorizer Class', () => {
@@ -66,11 +66,10 @@ describe('Authorizer Class', () => {
                 return Promise.reject(401);
             }
         });
-        return new Promise(function (resolve, reject) {
-            logger.info('!! in promise');
+        return new Promise(function () {
             return authorizer.authorize(makeRequest(false), (resultPr) => {
                 logger.info('<< got result:', resultPr);
-                return shouldGiveError(resultPr, err => {
+                return shouldGiveError(resultPr, () => {
                     done();
                 });
             });
@@ -85,10 +84,9 @@ describe('Authorizer Class', () => {
                 return Promise.resolve({name: 'ik', expires: Date.now() + 3600});
             }
         });
-        return new Promise(function (resolve, reject) {
-            logger.info('!! in promise');
+        return new Promise(function (resolve) {
             authorizer.authorize(makeRequest(true), (resultPr) => {
-                shouldBeOk(resultPr, (result)=> {
+                shouldBeOk(resultPr, (result) => {
                     logger.verbose('GOT:', result);
                     should.exist(result);
                     should.exist(result.name);
@@ -112,11 +110,11 @@ describe('Authorizer Class', () => {
         });
         // first time
         authorizer.authorize(makeRequest(true), (resultPr) => {
-            shouldBeOk(resultPr, (result)=> {
+            shouldBeOk(resultPr, (result) => {
                 should.exist(result);
                 // second time
-                authorizer.authorize(makeRequest(true), (resultPr) => {
-                    shouldBeOk(resultPr, (result2)=> {
+                authorizer.authorize(makeRequest(true), (resultPr2) => {
+                    shouldBeOk(resultPr2, (result2) => {
                         should.exist(result2);
                         expect(result).to.be.equal(result2);
                     });
@@ -137,11 +135,11 @@ describe('Authorizer Class', () => {
         });
         // first time
         authorizer.authorize(makeRequest(true), (resultPr) => {
-            shouldBeOk(resultPr, (result)=> {
+            shouldBeOk(resultPr, (result) => {
                 should.exist(result);
                 // second time
-                authorizer.authorize(makeRequest(true), (resultPr) => {
-                    shouldBeOk(resultPr, (result2)=> {
+                authorizer.authorize(makeRequest(true), (resultPr2) => {
+                    shouldBeOk(resultPr2, (result2) => {
                         should.exist(result2);
                         expect(result).to.be.equal(result2);
                     });
@@ -150,6 +148,4 @@ describe('Authorizer Class', () => {
         });
     });
 
-
-})
-;
+});
