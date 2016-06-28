@@ -12,8 +12,8 @@ const logger = require('../lib/defaultlogger');
 let authorizer = null;
 global.testing = false;
 
-const okAuthHeader = 'Basic aWs6dG9rZW4=';
-const wrongAuthHeader = 'Basic 123456=';
+const okAuthHeader = 'Bearer aWs6dG9rZW4=';
+const wrongAuthHeader = 'Bearer 123456=';
 
 const makeRequest = (returnOk) => {
     logger.info('makerequest, ok=', returnOk);

@@ -1,6 +1,6 @@
 {
   "name": "lib-authorizer",
-  "version": "0.1.2",
+  "version": "0.1.3",
   "description": "Authorize layer based on tokens",
   "main": "index.js",
   "repository": {
